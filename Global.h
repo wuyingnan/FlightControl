@@ -12,4 +12,5 @@
 //#define UCA3_Used_
 //#define TimerA1_PWM_Used_
 //#define Traction_Used_
+//#define MPU6050_Used_
 #endif

@@ -2,7 +2,7 @@
 
 <project>
   <fileVersion>2</fileVersion>
-  <fileChecksum>2098168146</fileChecksum>
+  <fileChecksum>3738833875</fileChecksum>
   <configuration>
     <name>Debug</name>
     <outputs>
@@ -14,6 +14,8 @@
       <file>$PROJ_DIR$\IMU.c</file>
       <file>$PROJ_DIR$\IMU.h</file>
       <file>$PROJ_DIR$\main.c</file>
+      <file>$PROJ_DIR$\MPU6050.c</file>
+      <file>$PROJ_DIR$\MPU6050.h</file>
       <file>$PROJ_DIR$\msp430_math.h</file>
       <file>$PROJ_DIR$\MSPMATHLIB_IAR_msp430_small.lib</file>
       <file>$PROJ_DIR$\PID.c</file>
@@ -28,68 +30,83 @@
       <file>$PROJ_DIR$\UCS.h</file>
       <file>$PROJ_DIR$\WDT.c</file>
       <file>$PROJ_DIR$\WDT.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\TimerA1.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\UART.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\UCS.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\I2C.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\in430.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\IMU.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\msp430f5438.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\c\stdint.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\PID.r43</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\c\ymath.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\c\math.h</file>
-      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\PID.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\c\xtgmath.h</file>
-      <file>$TOOLKIT_DIR$\inc\msp430x54x.h</file>
-      <file>$PROJ_DIR$\Debug\Exe\FlightControl.ulp</file>
-      <file>$PROJ_DIR$\Debug\Obj\IMU.r43</file>
-      <file>$PROJ_DIR$\Debug\Exe\FlightControl.d43</file>
-      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
-      <file>$TOOLKIT_DIR$\config\lnk430F5438.xcl</file>
-      <file>$TOOLKIT_DIR$\config\multiplier32_loc2.xcl</file>
-      <file>$PROJ_DIR$\Debug\Obj\UART.r43</file>
-      <file>$PROJ_DIR$\Debug\Obj\TimerA1.r43</file>
-      <file>$PROJ_DIR$\Debug\Obj\I2C.r43</file>
-      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\FlightControl.pbd</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.r43</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\FC.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\WDT.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
       <file>$PROJ_DIR$\Debug\Obj\UCS.r43</file>
-      <file>$PROJ_DIR$\Debug\Obj\WDT.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\WDT.r43</file>
       <file>$PROJ_DIR$\Debug\Obj\PWM.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\PWM.r43</file>
       <file>$PROJ_DIR$\Debug\Obj\FC.r43</file>
-      <file>$PROJ_DIR$\Debug\Obj\FC.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
-      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\FlightControl.pbd</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\I2C.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\TimerA1.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\UART.r43</file>
+      <file>$TOOLKIT_DIR$\config\multiplier32_loc2.xcl</file>
+      <file>$TOOLKIT_DIR$\config\lnk430F5438.xcl</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$PROJ_DIR$\Debug\Exe\FlightControl.d43</file>
+      <file>$PROJ_DIR$\Debug\Obj\IMU.r43</file>
+      <file>$PROJ_DIR$\Debug\Exe\FlightControl.ulp</file>
+      <file>$TOOLKIT_DIR$\inc\msp430x54x.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\xtgmath.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\PID.pbi</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\UART.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\TimerA1.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\MPU6050.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\MPU6050.r43</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\math.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\ymath.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\PID.r43</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\I2C.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\in430.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\IMU.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\msp430f5438.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\stdint.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\UCS.pbi</file>
     </outputs>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 42</file>
+        </tool>
+        <tool>
+          <name>ULP430</name>
+          <file> 44</file>
+        </tool>
+      </outputs>
+    </file>
     <file>
       <name>$PROJ_DIR$\FC.c</name>
       <outputs>
         <tool>
-          <name>ICC430</name>
-          <file> 59</file>
+          <name>BICOMP</name>
+          <file> 26</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 60</file>
+          <name>ICC430</name>
+          <file> 33</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>ICC430</name>
-          <file> 26 45 8 37 30 36 31 33 38 34 32 61 40 15 13 6 17 4 11</file>
+          <name>BICOMP</name>
+          <file> 60 41 10 53 63 54 64 57 56 58 25 46 17 15 6 19 4 13</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 26 45 8 37 30 36 31 33 34 32 61 40 15 13 6 17 4 11</file>
+          <name>ICC430</name>
+          <file> 60 41 10 53 63 54 64 57 48 56 58 25 46 17 15 6 19 4 13</file>
         </tool>
       </inputs>
     </file>
@@ -97,22 +114,22 @@
       <name>$PROJ_DIR$\I2C.c</name>
       <outputs>
         <tool>
-          <name>ICC430</name>
-          <file> 50</file>
+          <name>BICOMP</name>
+          <file> 59</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 25</file>
+          <name>ICC430</name>
+          <file> 36</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>ICC430</name>
-          <file> 28 26 45 29 30 31 33 38 34 32 61 15 6</file>
+          <name>BICOMP</name>
+          <file> 62 60 41 65 63 64 57 56 58 25 17 6</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 28 26 45 29 30 31 33 34 32 61 15 6</file>
+          <name>ICC430</name>
+          <file> 62 60 41 65 63 64 57 48 56 58 25 17 6</file>
         </tool>
       </inputs>
     </file>
@@ -120,22 +137,22 @@
       <name>$PROJ_DIR$\IMU.c</name>
       <outputs>
         <tool>
-          <name>ICC430</name>
-          <file> 43</file>
+          <name>BICOMP</name>
+          <file> 61</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 27</file>
+          <name>ICC430</name>
+          <file> 43</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>ICC430</name>
-          <file> 6 8 37 30 36 31 33 38 34 32 61 40 2 17 4 15</file>
+          <name>BICOMP</name>
+          <file> 6 10 53 63 54 64 57 56 58 25 46 2 19 4 17 9</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 6 8 37 30 36 31 33 34 32 61 40 2 17 4 15</file>
+          <name>ICC430</name>
+          <file> 6 10 53 63 54 64 57 48 56 58 25 46 2 19 4 17 9</file>
         </tool>
       </inputs>
     </file>
@@ -143,22 +160,45 @@
       <name>$PROJ_DIR$\main.c</name>
       <outputs>
         <tool>
-          <name>ICC430</name>
-          <file> 53</file>
+          <name>BICOMP</name>
+          <file> 35</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 51</file>
+          <name>ICC430</name>
+          <file> 28</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>ICC430</name>
-          <file> 28 26 45 8 37 30 36 31 33 38 34 32 61 40 4 19 21 15 17 2 6 1</file>
+          <name>BICOMP</name>
+          <file> 62 60 41 10 53 63 54 64 57 56 58 25 46 4 21 23 17 19 2 6 1</file>
         </tool>
         <tool>
+          <name>ICC430</name>
+          <file> 62 60 41 10 53 63 54 64 57 48 56 58 25 46 4 21 23 17 19 2 6 1</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\MPU6050.c</name>
+      <outputs>
+        <tool>
           <name>BICOMP</name>
-          <file> 28 26 45 8 37 30 36 31 33 34 32 61 40 4 19 21 15 17 2 6 1</file>
+          <file> 51</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 52</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 4</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 4 62 60 41 21 17 2 9</file>
         </tool>
       </inputs>
     </file>
@@ -166,22 +206,22 @@
       <name>$PROJ_DIR$\PID.c</name>
       <outputs>
         <tool>
-          <name>ICC430</name>
-          <file> 35</file>
+          <name>BICOMP</name>
+          <file> 47</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 39</file>
+          <name>ICC430</name>
+          <file> 55</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>ICC430</name>
-          <file> 11 15</file>
+          <name>BICOMP</name>
+          <file> 13 17</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 11 15</file>
+          <name>ICC430</name>
+          <file> 13 17</file>
         </tool>
       </inputs>
     </file>
@@ -189,22 +229,22 @@
       <name>$PROJ_DIR$\PWM.c</name>
       <outputs>
         <tool>
-          <name>ICC430</name>
-          <file> 58</file>
+          <name>BICOMP</name>
+          <file> 31</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 57</file>
+          <name>ICC430</name>
+          <file> 32</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>ICC430</name>
-          <file> 41 26 45 13</file>
+          <name>BICOMP</name>
+          <file> 45 60 41 15</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 41 26 45 13</file>
+          <name>ICC430</name>
+          <file> 45 60 41 15</file>
         </tool>
       </inputs>
     </file>
@@ -212,22 +252,22 @@
       <name>$PROJ_DIR$\TimerA1.c</name>
       <outputs>
         <tool>
-          <name>ICC430</name>
-          <file> 49</file>
+          <name>BICOMP</name>
+          <file> 50</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 22</file>
+          <name>ICC430</name>
+          <file> 37</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>ICC430</name>
-          <file> 28 26 45 4 17</file>
+          <name>BICOMP</name>
+          <file> 62 60 41 4 19</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 28 26 45 4 17</file>
+          <name>ICC430</name>
+          <file> 62 60 41 4 19</file>
         </tool>
       </inputs>
     </file>
@@ -235,22 +275,22 @@
       <name>$PROJ_DIR$\UART.c</name>
       <outputs>
         <tool>
-          <name>ICC430</name>
-          <file> 48</file>
+          <name>BICOMP</name>
+          <file> 49</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 23</file>
+          <name>ICC430</name>
+          <file> 38</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>ICC430</name>
-          <file> 41 26 45 4 17 1</file>
+          <name>BICOMP</name>
+          <file> 45 60 41 4 19 1</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 41 26 45 4 17 1</file>
+          <name>ICC430</name>
+          <file> 45 60 41 4 19 1</file>
         </tool>
       </inputs>
     </file>
@@ -258,22 +298,22 @@
       <name>$PROJ_DIR$\UCS.c</name>
       <outputs>
         <tool>
-          <name>ICC430</name>
-          <file> 54</file>
+          <name>BICOMP</name>
+          <file> 66</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 24</file>
+          <name>ICC430</name>
+          <file> 29</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>ICC430</name>
-          <file> 41 26 45</file>
+          <name>BICOMP</name>
+          <file> 45 60 41</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 41 26 45</file>
+          <name>ICC430</name>
+          <file> 45 60 41</file>
         </tool>
       </inputs>
     </file>
@@ -281,44 +321,22 @@
       <name>$PROJ_DIR$\WDT.c</name>
       <outputs>
         <tool>
-          <name>ICC430</name>
-          <file> 56</file>
+          <name>BICOMP</name>
+          <file> 27</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 55</file>
+          <name>ICC430</name>
+          <file> 30</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>ICC430</name>
-          <file> 28 26 45 4</file>
-        </tool>
-        <tool>
           <name>BICOMP</name>
-          <file> 28 26 45 4</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>[ROOT_NODE]</name>
-      <outputs>
-        <tool>
-          <name>XLINK</name>
-          <file> 44</file>
+          <file> 62 60 41 4</file>
         </tool>
         <tool>
-          <name>ULP430</name>
-          <file> 42</file>
-        </tool>
-      </outputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Debug\Exe\FlightControl.d43</name>
-      <inputs>
-        <tool>
-          <name>XLINK</name>
-          <file> 46 47 59 50 43 35 58 49 48 54 56 53 9 62</file>
+          <name>ICC430</name>
+          <file> 62 60 41 4</file>
         </tool>
       </inputs>
     </file>
@@ -327,7 +345,16 @@
       <inputs>
         <tool>
           <name>BILINK</name>
-          <file> 60 25 27 39 57 22 23 24 55 51</file>
+          <file> 26 59 61 51 47 31 50 49 66 27 35</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\FlightControl.d43</name>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 40 39 33 36 43 52 55 32 37 38 29 30 28 11 24</file>
         </tool>
       </inputs>
     </file>

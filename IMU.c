@@ -26,6 +26,7 @@
 #include "I2C.h"
 #include "UART.h"
 #include "TimerA1.h"
+#include "MPU6050.h"
 
 //----------------------------------------------------------------------------------------------------
 // Definitions
@@ -240,6 +241,11 @@ void IMU_init()
   while(I2C_write(L3G2440_Address,CTRL_REG3, 0x08));   //
   while(I2C_write(L3G2440_Address,CTRL_REG4, 0xF0));   //+-2000dps
   while(I2C_write(L3G2440_Address,CTRL_REG5, 0x10));   //enable High Pass Filter
+  
+#ifdef MPU6050_Used_  
+//MPU6050_init
+  MPU6050_init();
+#endif
 }
 
 unsigned char IMU_getdata()
@@ -248,7 +254,16 @@ unsigned char IMU_getdata()
     
     if(IMUPreTime % 20==5)
     {
-      I2C_read(0x1e,0x03,2,(unsigned char *)&mx_raw);
+      while(!I2C_RXFIN)
+      {
+        if(IMUPreTime + IMUDelayTime <TimeBase)
+        {
+          I2C_init();
+          return 1;
+        }
+      }      
+      
+      I2C_read(0x1e,0x03,2,(unsigned char *)&mx_raw);          
       while(!I2C_RXFIN)
       {
         if(IMUPreTime + IMUDelayTime <TimeBase)
@@ -284,6 +299,12 @@ unsigned char IMU_getdata()
         
     if(I2C_read(0x53,0x32,2,(unsigned char *)&ax_raw))
       return 1;
+    
+#ifdef MPU6050_Used_
+      MPU6050_changeFormat();
+      MPU6050_filter();
+#endif  
+    
     while(!I2C_RXFIN)
     {
       if(IMUPreTime + IMUDelayTime <TimeBase)
@@ -403,7 +424,10 @@ unsigned char IMU_getdata()
         return 1;
       }
     }    
-    gz_raw=(unsigned)gz_raw/256+((unsigned)gz_raw%256)*256-gz_bias;
+#ifdef MPU6050_Used_
+    MPU6050_getData();
+#endif      
+      gz_raw=(unsigned)gz_raw/256+((unsigned)gz_raw%256)*256-gz_bias;
 
 //    if (abs(gx_raw-gx_filtered)<100)
       gx_filtered=(gx_raw*3+gx_filtered)/4;
@@ -468,6 +492,9 @@ void IMU_calibrate()
   axar_cnt=0;
   ayar_cnt=0;
   azar_cnt=0;  
+#ifdef MPU6050_Used_  
+  MPU6050_calibrate();
+#endif  
 }
 
 void IMU_update()
