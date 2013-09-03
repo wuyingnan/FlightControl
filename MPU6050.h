@@ -14,7 +14,7 @@
 typedef struct{
   signed int AX,AY,AZ,TEMP,GX,GY,GZ;
 }MPU6050_DataStruct;
-extern MPU6050_DataStruct MPU6050_raw;
+extern MPU6050_DataStruct MPU6050_raw, MPU6050_filtered;
 
 extern void MPU6050_init();
 extern void MPU6050_getData();

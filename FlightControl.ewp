@@ -1964,6 +1964,12 @@
     <name>$PROJ_DIR$\I2C.h</name>
   </file>
   <file>
+    <name>$PROJ_DIR$\I2C2.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\I2C2.h</name>
+  </file>
+  <file>
     <name>$PROJ_DIR$\IMU.c</name>
   </file>
   <file>
@@ -1971,6 +1977,12 @@
   </file>
   <file>
     <name>$PROJ_DIR$\main.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\MMA8452.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\MMA8452.h</name>
   </file>
   <file>
     <name>$PROJ_DIR$\MPU6050.c</name>

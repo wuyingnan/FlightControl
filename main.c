@@ -8,9 +8,11 @@
 #include "UART.h"
 
 #include "I2C.h"
+#include "I2C2.h"
 #include "IMU.h"
 
 #include "FC.h"
+#include "MMA8452.h"
 
 unsigned long nowTime,startTime;
 unsigned char command;
@@ -24,6 +26,8 @@ void main( void )
   TimerA1_init();
   
   I2C_init();
+  
+  I2C2_init();
   
   UART_init(UCA1,115200);
   
@@ -53,11 +57,12 @@ void main( void )
         if(!IMU_getdata())
           AHRSupdate();        
 //        IMU_update();
+        _NOP();
         
         if (nowTime % 10 == 0)
         {
           FC_control();
-          _NOP();          
+          _NOP();
         }
       }
     }

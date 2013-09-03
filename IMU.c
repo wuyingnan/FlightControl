@@ -31,8 +31,8 @@
 //----------------------------------------------------------------------------------------------------
 // Definitions
 
-#define Kp 2.5f          	// proportional gain governs rate of convergence to accelerometer/magnetometer
-#define Ki 0.15f     		// integral gain governs rate of convergence of gyroscope biases
+#define Kp 3.0f          	// proportional gain governs rate of convergence to accelerometer/magnetometer
+#define Ki 0.1f     		// integral gain governs rate of convergence of gyroscope biases
 #define halfT 0.0025f		// half the sample period
 #define FilterLen 20
 #define IMUDelayTime 100
@@ -68,9 +68,21 @@ void IMUupdate()
     gy = gy_filtered*0.00106526443603169529841533860381f;
     gz = gz_filtered*0.00106526443603169529841533860381f;    
     
-    ax = ax_filtered;
-    ay = ay_filtered;
-    az = az_filtered;    
+    ax = ax_filtered
+    #ifdef MPU6050_Used_
+          + MPU6050_filtered.AX*9      
+    #endif      
+    ;
+    ay = ay_filtered
+    #ifdef MPU6050_Used_
+          + MPU6050_filtered.AY*9      
+    #endif      
+    ;
+    az = az_filtered
+    #ifdef MPU6050_Used_
+          + MPU6050_filtered.AZ*9      
+    #endif      
+    ;    
     
     // normalise the measurements
     norm = sqrt(ax*ax + ay*ay + az*az);       
@@ -130,6 +142,7 @@ void AHRSupdate()
         float hx, hy, hz, bx, bz;
         float vx, vy, vz, wx, wy, wz;
         float ex, ey, ez;
+        float fusePara;
 
         // auxiliary variables to reduce number of repeated operations
         float q0q0 = q0*q0;
@@ -147,9 +160,28 @@ void AHRSupdate()
         gy = gy_filtered*0.00106526443603169529841533860381f;
         gz = gz_filtered*0.00106526443603169529841533860381f;    
         
-        ax = ax_filtered;
-        ay = ay_filtered;
-        az = az_filtered;    
+    #ifdef MPU6050_Used_        
+        fusePara = (ax_filtered*ax_filtered+ay_filtered*ay_filtered+az_filtered*az_filtered-65536)/
+          (float)(MPU6050_filtered.AX*MPU6050_filtered.AX+MPU6050_filtered.AY*MPU6050_filtered.AY+MPU6050_filtered.AZ*MPU6050_filtered.AZ-268435456L);
+        if (fusePara<0)
+          fusePara=-fusePara;
+    #endif        
+        
+        ax = ax_filtered*64
+    #ifdef MPU6050_Used_
+          + MPU6050_filtered.AX*fusePara
+    #endif      
+    ;          
+        ay = ay_filtered*64
+    #ifdef MPU6050_Used_
+          + MPU6050_filtered.AY*fusePara      
+    #endif      
+    ;          
+        az = az_filtered*64
+    #ifdef MPU6050_Used_
+          - MPU6050_filtered.AZ*fusePara      
+    #endif      
+    ;
         
         mx = mx_raw;
         my = my_raw;
@@ -285,7 +317,6 @@ unsigned char IMU_getdata()
       }        
       I2C_read(0x1e,0x07,2,(unsigned char *)&my_raw);
       mz_raw=(unsigned)mz_raw/256+((unsigned)mz_raw%256)*256;
-      
       while(!I2C_RXFIN)
       {
         if(IMUPreTime + IMUDelayTime <TimeBase)
