@@ -21,10 +21,10 @@ void FC_init()
   pitchPID.myInput = &pitchLong;
   pitchPID.mySetpoint = 0;
   pitchPID.inAuto = 1;
-  PID_setOutputLimits(&pitchPID, (signed long)-40000, (signed long)40000);
+  PID_setOutputLimits(&pitchPID, (signed long)-throttle*100/2, (signed long)throttle*100/2);
   pitchPID.SampleTime = 10;
   PID_setControllerDirection(&pitchPID, 0);
-  PID_setTunings(&pitchPID, 500, 0, 0);
+  PID_setTunings(&pitchPID, 750, 100, 0);
   if (TimeBase>pitchPID.SampleTime)
     pitchPID.lastTime = TimeBase-pitchPID.SampleTime;
   else
@@ -97,12 +97,16 @@ void FC_motorFilter(unsigned long l1, unsigned long r1,unsigned long r2,unsigned
   lastR1=filteredR1;  
   lastL2=filteredL2;  
   lastR2=filteredR2;  
+  UART_sendint(UCA1,filteredL1);
+  UART_sendstr(UCA1," ");  
+  UART_sendint(UCA1,filteredL2);  
+  UART_sendstr(UCA1," ");    
 }
 
 void FC_control()
 {
     pos=IMU_getEuler();  
-    
+/*    
     FC_send(0x88);
     FC_send(0xaf);
     FC_send(0x1c);
@@ -142,7 +146,7 @@ void FC_control()
     FC_send(0);
     
     
-/*
+
     UART_sendlong(UCA1,(signed long)(pitchLong)+1000000);
     UART_sendstr(UCA1," ");
     UART_sendlong(UCA1,(signed long)(rollLong)+1000000);
@@ -158,7 +162,7 @@ void FC_control()
     PID_compute(&rollPID);
     PID_compute(&yawPID);
     
-    FC_motorFilter(throttle-rollPID.myOutput/Accuracy,throttle-rollPID.myOutput/Accuracy,throttle+rollPID.myOutput/Accuracy,throttle+rollPID.myOutput/Accuracy);
+    FC_motorFilter(throttle+rollPID.myOutput/Accuracy,throttle+rollPID.myOutput/Accuracy,throttle-rollPID.myOutput/Accuracy,throttle-rollPID.myOutput/Accuracy);
 }
 
 void FC_emergencyStop()

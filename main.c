@@ -47,6 +47,8 @@ void main( void )
   
 //  WDTCTL = WDTCNTCL+ WDT_ADLY_1000;
   
+  while(UCA1_GET_CHAR(&command));
+  
   startTime=TimeBase;
 
 
