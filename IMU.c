@@ -32,9 +32,9 @@
 // Definitions
 
 #define Kp 3.0f          	// proportional gain governs rate of convergence to accelerometer/magnetometer
-#define Ki 0.1f     		// integral gain governs rate of convergence of gyroscope biases
+#define Ki 0.05f     		// integral gain governs rate of convergence of gyroscope biases
 #define halfT 0.0025f		// half the sample period
-#define FilterLen 20
+#define FilterLen 10
 #define IMUDelayTime 100
 
 //---------------------------------------------------------------------------------------------------

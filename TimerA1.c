@@ -2,6 +2,7 @@
 #include"Global.h"
 //调参数用
 #include"UART.h"
+#include"FC.h"
 
 volatile unsigned long TimeBase = 0;
 
@@ -16,7 +17,7 @@ void TimerA1_init()
 #pragma vector = TIMER1_A0_VECTOR
 __interrupt void TA1ISR(void)
 {
-  
+  static unsigned char command;
 #ifdef StepMotor_Used_
   static unsigned char StepLogic[2] = {0,0};
   unsigned char i;

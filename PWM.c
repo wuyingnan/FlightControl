@@ -10,6 +10,7 @@
 void PWM_init(void)
 {
 	P1DIR |= BIT2+BIT3+BIT4+BIT5;           // P2.2 and P2.3 output
+        P1DS  |= BIT2+BIT3+BIT4+BIT5;         
 	P1SEL |= BIT2+BIT3+BIT4+BIT5;			// P1.2 and P2.3 options select
 	TA0CCR0 = 5000-1;						// PWM Period
 	TA0CCTL1 = OUTMOD_7;                    // CCR1 reset/set
@@ -28,23 +29,23 @@ void PWM_1(unsigned int n)
 {
   if(n>1000) n=1000;
 //  else if(n<0) n=0;
-  TA0CCR1 = n*2/5+1100;                            // CCR1 PWM duty cycle
+  TA0CCR1 = n+1000;                            // CCR1 PWM duty cycle
 }
 void PWM_2(unsigned int n)
 {
   if(n>1000) n=1000;
 //  else if(n<0) n=0;
-  TA0CCR2 = n*2/5+1100;                            // CCR1 PWM duty cycle
+  TA0CCR2 = n+1000;                            // CCR1 PWM duty cycle
 }
 void PWM_3(unsigned int n)
 {
   if(n>1000) n=1000;
 //  else if(n<0) n=0;
-  TA0CCR3 = n*2/5+1100;                            // CCR1 PWM duty cycle
+  TA0CCR3 = n+1000;                            // CCR1 PWM duty cycle
 }
 void PWM_4(unsigned int n)
 {
   if(n>1000) n=1000;
 //  else if(n<0) n=0;
-  TA0CCR4 = n*2/5+1100;                            // CCR1 PWM duty cycle
+  TA0CCR4 = n+1000;                            // CCR1 PWM duty cycle
 }

@@ -11,13 +11,13 @@ unsigned char PID_compute(PID_struct *pid)
       /*Compute all the working error variables*/
       signed long input = *pid->myInput;
       signed long error = pid->mySetpoint - input;
-      pid->ITerm += pid->ki * error / Accuracy;
+      pid->ITerm += pid->ki * error /Accuracy;
       if(pid->ITerm > pid->outMax) pid->ITerm= pid->outMax;
       else if(pid->ITerm < pid->outMin) pid->ITerm= pid->outMin;
       signed long dInput = (input - pid->lastInput);
  
       /*Compute PID Output*/
-      signed long output = (pid->kp * error)/Accuracy + pid->ITerm- (pid->kd * dInput) / Accuracy;
+      signed long output = (pid->kp * error)/Accuracy + pid->ITerm- (pid->kd * dInput)/Accuracy;
       
       if(output > pid->outMax) output = pid->outMax;
       else if(output < pid->outMin) output = pid->outMin;
