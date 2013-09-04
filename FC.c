@@ -24,7 +24,7 @@ void FC_init()
   PID_setOutputLimits(&pitchPID, (signed long)-throttle*100/2, (signed long)throttle*100/2);
   pitchPID.SampleTime = 10;
   PID_setControllerDirection(&pitchPID, 0);
-  PID_setTunings(&pitchPID, 750, 100, 0);
+  PID_setTunings(&pitchPID, 800, 500, 10);
   if (TimeBase>pitchPID.SampleTime)
     pitchPID.lastTime = TimeBase-pitchPID.SampleTime;
   else
